@@ -9,22 +9,21 @@
 #include <stdio.h>
 #include "my.h"
 
-void init_maze(map_t *map)
+char choise(map_t *map)
 {
-    for (int y = 0; y < map->y; y++)
-        for (int x = 0; x < map->x; x++)
-            map->map[y][x] = 'x';
-    map->map[end_y][end_x] = '*';
+    return ( (rand() * (map->y + map->x) % 2) == 1 ? '*' : 'X');
 }
 
-void maze_full(map_t *map)
+void init_maze(map_t *map)
 {
     int end_y = map->y - 1;
     int end_x = map->x - 1;
 
-    init_maze(map);
+    for (int y = 0; y < map->y; y++)
+        for (int x = 0; x < map->x; x++)
+            map->map[y][x] = choise(map);
     map->map[0][0] = '*';
-    putchar('\n');
+    map->map[end_y][end_x] = '*';
 }
 
 void print_maze(map_t *map)
@@ -35,6 +34,6 @@ void print_maze(map_t *map)
 
 void maze_generator(map_t *map)
 {
-    maze_full(map);
+    init_maze(map);
     print_maze(map);
 }

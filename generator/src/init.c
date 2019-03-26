@@ -34,7 +34,7 @@ int verif_init(map_t *map)
         }
     }
     if (map->map == NULL) {
-        dprintf(2, "Error: malloc error...\n");
+        dprintf(2, "Error: Map Malloc error...\n");
         return 84;
     }
     return 0;
