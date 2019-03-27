@@ -9,9 +9,8 @@
 
 #include "struct.h"
 
-void init_map(map_t *map, char **av);
-int verif_init(map_t *map);
-void print_init(map_t *map);
-void maze_full(map_t *map);
-void print_maze(map_t *map);
+void init_map(map_t *map, error_t *err, char **av);
+void init_pos(map_t *map, pos_t *pos);
+int verif_init(map_t *map, error_t *err);
 void maze_generator(map_t *map);
+void maze(map_t *map, pos_t *pos);

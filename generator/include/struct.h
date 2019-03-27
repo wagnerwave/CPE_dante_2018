@@ -9,9 +9,19 @@
 
 #include "my.h"
 
-typedef struct map_var_s {
+typedef struct error_s {
     int error;
+}error_t;
+
+typedef struct map_var_s {
     int x;
     int y;
     char **map;
 }map_t;
+
+typedef struct position_y_x_s {
+    int x;
+    int y;
+    int end_x;
+    int end_y;
+}pos_t;
