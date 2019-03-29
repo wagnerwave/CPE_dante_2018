@@ -10,8 +10,9 @@ D_INC	=	./include/
 
 NAME	=	generator
 
-SRC	=	$(D_SRC)algo_maze.c \
-		$(D_SRC)maze.c \
+SRC	=	$(D_SRC)algo_imperfect.c \
+		$(D_SRC)imperfect.c \
+		$(D_SRC)perfect.c \
 		$(D_SRC)init.c \
 		$(D_SRC)main.c
 

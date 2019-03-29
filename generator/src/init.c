@@ -25,8 +25,11 @@ void init_map(map_t *map, error_t *err, char **av)
     if (map->y == 0 || map->x == 0)
         err->error = 84;
     map->map = malloc(sizeof(char *) * (map->y + 1));
-    for (int i = 0; i < map->y; i++)
-        map->map[i] = malloc(sizeof(char **) * (map->x + 1));
+    for (int i = 0; i < map->y; i++) {
+        map->map[i] = malloc(sizeof(char) * (map->x + 1));
+        map->map[i][map->x] = '\0';
+    }
+
 }
 
 int verif_init(map_t *map, error_t *err)
