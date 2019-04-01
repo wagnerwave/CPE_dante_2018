@@ -41,10 +41,10 @@ void    check_x(my_game_t *game, char *around, double *x)
 
 void    check_y(my_game_t *game, char *around, double *y)
 {
-    if (around[0] && around[0] == 'x' &&
+    if (around[0] && around[0] == '*' &&
 game->camera->move.y - 1 + *y <= (int)game->camera->move.y - 1)
         *y = (int)game->camera->move.y - 1 -(game->camera->move.y - 1);
-    if (around[1] && around[1] == 'O' &&
+    if (around[1] && around[1] == 'X' &&
 game->camera->move.y - 1 + *y <= (int)game->camera->move.y - 1)
         *y = (int)game->camera->move.y - 1 -(game->camera->move.y - 1);
     if (around[2] && around[2] != '.' &&

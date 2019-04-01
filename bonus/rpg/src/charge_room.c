@@ -16,7 +16,6 @@ int     set_dimension(room_t *room, char *line)
 {
     int i = 0;
 
-    printf("D\n");
     if (!(room->x_max = my_getnbr(line)))
         return (0);
     while (line[i] && line[i] != ' ')
@@ -30,7 +29,6 @@ int     set_dimension(room_t *room, char *line)
         return (0);
     if (room->x_max <= 0 && room->y_max <= 0 && room->z_max <= 0)
         return (0);
-    printf("E\n");
     free(line);
     return (1);
 }
@@ -42,23 +40,18 @@ int     set_each_line(room_t *room, char **tab, int fd)
     int j;
     int k;
 
-    printf("0\n");
     while (i < room->z_max) {
         if (!(tab[i] = malloc(sizeof(char) * (room->x_max + 1))))
             return (0);
-    	printf("1\n");
         if (!(line = get_next_line(fd)))
             return (0);
         j = 0;
         k = 0;
-    printf("2 %s\n", line);
         while (j < room->x_max) {
-    printf("3\n");
-            tab[i][j] = (line[k]) ? line[k] : '*';
+            tab[i][j] = (line[k]) ? line[k] : '.';
             j++;
             (line[k]) ? k++ : 0;
         }
-    printf("4\n");
         tab[i][j] = '\0';
         i++;
     }
@@ -75,20 +68,17 @@ room_t  *set_room(my_game_t *game, int nb)
         (fd != -1) ? close(fd) : 0;
         return (NULL);
     }
-    printf("A\n");
     if (!(room = malloc(sizeof(room_t)))) {
         close(fd);
         free(line);
         return (NULL);
     }
-    printf("B\n");
     if (!set_dimension(room, line) || !set_tab_and_obj(game, room, fd)) {
         close(fd);
         free(line);
         free(room);
         return (NULL);
     }
-    printf("C\n");
     return (room);
 }
 

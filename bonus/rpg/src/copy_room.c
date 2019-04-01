@@ -10,7 +10,7 @@
 #include "world.h"
 #include "my.h"
 
-const char char_obj[] = "X";
+const char char_obj[] = "*X";
 
 int     get_nb_of_obj(room_t *room)
 {
@@ -24,7 +24,7 @@ int     get_nb_of_obj(room_t *room)
         while (j < room->z_max) {
             k = 0;
             while (k < room->x_max) {
-                (room->room[i][j][k] != '*') ? nb++ : 0;
+                (room->room[i][j][k] != '.') ? nb++ : 0;
                 k++;
             }
             j++;

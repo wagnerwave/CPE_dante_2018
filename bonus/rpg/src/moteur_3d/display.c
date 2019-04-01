@@ -22,13 +22,13 @@ sfVector3f      normal_vec(sfVector3f a, sfVector3f b, sfVector3f c)
 
 int     is_drawable(triangle_t *tri)
 {
-    if (tri->point_2d[0]->z <= 0 || tri->point_2d[0]->y < 0 ||
+    /*if (tri->point_2d[0]->z <= 0 || tri->point_2d[0]->y < 0 ||
 tri->point_2d[0]->y >= HM || tri->point_2d[0]->x < 0 || tri->point_2d[0]->x >=
 WM || tri->point_2d[1]->z <= 0 || tri->point_2d[1]->y < 0 || tri->point_2d[1]->y
 >= HM || tri->point_2d[1]->x < 0 || tri->point_2d[1]->x >= WM ||
 tri->point_2d[2]->z <= 0 || tri->point_2d[2]->y < 0 || tri->point_2d[2]->y >= HM
 || tri->point_2d[2]->x < 0 || tri->point_2d[2]->x >= WM)
-        return (0);
+        return (0);*/
     if (tri->point_2d[0]->z <= 0 || tri->point_2d[1]->z <= 0 ||
 tri->point_2d[2]->z <= 0)
         return (0);
