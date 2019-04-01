@@ -51,6 +51,40 @@ void init_perfect_maze(map_t *map, pos_t *pos)
     map->map[pos->end_y][pos->end_x] = '*';
 }
 
+int compt_asterix2(map_t *map , int y)
+{
+    int nb_ast = 0;
+
+    for (int x = 0; x < map->x; x++)
+        (map->map[y][x] == '.') ? nb_ast++ : 0;
+    return nb_ast;
+}
+
+void algo_perfect2(map_t *map, int y, int x)
+{
+    int r = 0;
+
+    r = rand() % map->x;
+    ((y % 2) == 0) ? map->map[y][x] = '.' : 0;
+    ((y % 2) == 1) ? map->map[y][x] = 'X' : 0;
+    if (compt_asterix2(map, y) == 0 && x == map->x - 1) {
+        x = r;
+        map->map[y][x] = '.';
+    }
+}
+
+void init_perfect_maze2(map_t *map, pos_t *pos)
+{
+    int y = 0;
+
+    mem_maze(map);
+    for (int x = 0; x < map->x; x++)
+        for (y = 0; y < map->y; y++)
+            algo_perfect2(map, y, x);
+    map->map[0][0] = '.';
+    map->map[pos->end_y][pos->end_x] = '.';
+}
+
 void maze_perfect(map_t *map)
 {
     pos_t *pos = malloc(sizeof(pos_t) + 1);
@@ -62,5 +96,6 @@ void maze_perfect(map_t *map)
     printf("%d 2 %d\n\n", map->x, map->y);
     print_maze(map);
     putchar('\n');
+    init_perfect_maze2(map, pos);
     print_maze(map);
 }
