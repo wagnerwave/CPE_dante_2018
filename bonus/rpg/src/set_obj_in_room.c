@@ -53,9 +53,9 @@ void    set_all_obj_in_room(my_game_t *game, room_t *room)
         while (j < room->z_max) {
             k = 0;
             while (k < room->x_max) {
-                (room->room[i][j][k] != '*') ?
+                (room->room[i][j][k] != '.') ?
 copy_obj(room->fix_obj[nb], get_obj_of_char(game, room->room[i][j][k])) : 0;
-                (room->room[i][j][k] != '*') ?
+                (room->room[i][j][k] != '.') ?
 move_obj_to(room->fix_obj[nb++], i, j, k) : 0;
                 k++;
             }
@@ -89,22 +89,16 @@ int     set_tab_and_obj(my_game_t *game, room_t *room, int fd)
 {
     int i = 0;
 
-    printf("G\n");
     if (!(room->room = malloc(sizeof(char**) * room->y_max)))
         return (0);
-    printf("H\n");
     while (i < room->y_max) {
         if (!(room->room[i] = malloc(sizeof(char*) * room->z_max)))
             return (0);
-    	printf("a\n");
         free(get_next_line(fd));
-    	printf("b\n");
         if (!set_each_line(room, room->room[i], fd))
             return (0);
-    	printf("c\n");
         i++;
     }
-    printf("I\n");
     if (!set_obj_in_room(game, room))
         return (0);
     return (1);
