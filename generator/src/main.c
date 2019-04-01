@@ -11,7 +11,8 @@
 #include <stdio.h>
 #include "my.h"
 
-void print_err_arg(void) {
+void print_err_arg(void)
+{
     dprintf(2, "Error : too many arguments or not enought.\n");
     dprintf(2, "./generator [x] [y] [perfect/imperfect].\n");
     exit(84);
@@ -25,13 +26,13 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
     if (verif_init(map, err) == 84)
         return 84;
     if (ac >= 3) {
-        if (ac == 4 && strcmp(av[3], "perfect") != 0 && strcmp(av[3], "imperfect") != 0)
+        if (ac == 4 && PERFECT != 0 && IMPERFECT != 0)
             print_err_arg();
-        if (ac == 4 && strcmp(av[3], "perfect") == 0) {
+        if (ac == 4 && PERFECT == 0) {
             maze_perfect(map);
             return 0;
         }
-        if (ac == 4 && strcmp(av[3], "imperfect") == 0) {
+        if (ac == 4 && IMPERFECT == 0) {
             maze_imperfect(map);
             return 0;
         }

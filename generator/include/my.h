@@ -9,6 +9,9 @@
 
 #include "struct.h"
 
+#define IMPERFECT strcmp(av[3], "imperfect")
+#define PERFECT strcmp(av[3], "perfect")
+
 void init_map(map_t *map, error_t *err, char **av);
 void init_pos(map_t *map, pos_t *pos);
 int verif_init(map_t *map, error_t *err);
