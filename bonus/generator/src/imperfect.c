@@ -38,8 +38,12 @@ void init_maze(map_t *map)
 
 void print_maze(map_t *map)
 {
-    for (int i = 0; i < map->y; i++)
-        printf("%s\n", map->map[i]);
+    for (int i = 0; i < map->y; i++) {
+        putchar('X');
+        printf("%s", map->map[i]);
+        putchar('X');
+        putchar('\n');
+    }
 }
 
 void maze_imperfect(map_t *map)

@@ -67,8 +67,29 @@ void maze_perfect(map_t *map)
     init_pos(map, pos);
     init_perfect_maze(map, pos);
     printf("%d 2 %d\n\n", map->x, map->y);
+    for (int x = 0; x < map->x + 2; x++)
+        putchar('X');
+    putchar('\n');
     print_maze(map);
+    for (int x = 0; x < map->x + 2; x++) {
+        if (x == map->x || x == map->x + 1) {
+            putchar('*');
+        } else {
+        putchar('X');
+        }
+    }
+    puts("\n\n");
+    for (int x = 0; x < map->x + 2; x++)
+        putchar('X');
     putchar('\n');
     new_map(map, pos);
     print_maze(map);
+    for (int x = 0; x < map->x + 2; x++) {
+        if (x == map->x || x == map->x + 1) {
+            putchar('.');
+        } else {
+        putchar('X');
+        }
+    }
+    putchar('\n');
 }
