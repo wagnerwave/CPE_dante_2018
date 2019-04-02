@@ -8,12 +8,14 @@
 #include <stdlib.h>
 #include "dante.h"
 
-static  int     **set_tab(map_t *map)
+static  case_t  *set_tab(map_t *map)
 {
     case_t *tab;
 
-    if (!(tab = malloc(sizeof(case_t*) * (map->y_max * map->x_max + 1))))
+    if (!(tab = malloc(sizeof(case_t*) * (map->y_max * map->x_max))))
         return (NULL);
+    tab[0] = NULL;
+    map->nb_case = 0;
     return (tab);
 }
 

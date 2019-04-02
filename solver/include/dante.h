@@ -17,8 +17,9 @@ typedef struct  case_s
 
 typedef struct  map_s
 {
+    case_t  *tab;
     char    **map;
-    int     **tab;
+    int     nb_case;
     int     x_max;
     int     y_max;
 }               map_t;

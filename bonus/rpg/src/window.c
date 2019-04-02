@@ -16,9 +16,9 @@ int     window(void)
 
     if (!(game = set_game()))
         return (84);
-    game->camera->move.x = 1;
+    game->camera->move.x = 1.5;
     game->camera->move.y = 1;
-    game->camera->move.z = 1;
+    game->camera->move.z = 1.5;
     game->clock = sfClock_create();
     game->time_fg = sfClock_getElapsedTime(game->clock).microseconds;
     while (sfRenderWindow_isOpen(game->win->window)) {
