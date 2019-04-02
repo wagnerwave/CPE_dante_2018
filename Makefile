@@ -1,44 +1,23 @@
 ##
-## EPITECH PROJECT, 2018
+## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
-## Makefile
+## CPE_dante_2018 Makefile
 ##
 
-D_SRC	=	./src/
-D_INC	=	./include/
-D_LIB	=	./lib/my/
+SOLVER_DIR	=	./solver/
+GENERATOR_DIR	=	./generator/
 
-SRC	=	$(D_SRC)main.c			\
+all	:
+		@make -C $(SOLVER_DIR)
+		@make -C $(GENERATOR_DIR)
 
-OBJ	=	$(SRC:%.c=%.o)
+clean	:
+		@make clean -C $(SOLVER_DIR)
+		@make clean -C $(GENERATOR_DIR)
 
-NAME	=	binary_name
+fclean	:
+		@make fclean -C $(SOLVER_DIR)
+		@make fclean -C $(GENERATOR_DIR)
 
-CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
-
-LDFLAGS	=	-L$(D_LIB) -lmy
-
-all: $(NAME)
-
-libmy:
-	@make -C $(D_LIB)
-
-clean:
-	@rm -f $(OBJ)
-
-fclean:
-	@$(MAKE) clean
-	@$(MAKE) -C $(D_LIB) fclean
-	@rm -f $(NAME)
-	@rm -f *~
-
-$(NAME): $(OBJ)
-	@$(MAKE) -C lib/my
-	@gcc -o $(NAME) $(OBJ) $(LDFLAGS)
-
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-
-.PHONY: all clean fclean re
+re	:	fclean all
