@@ -2,11 +2,9 @@
 
 x=$1
 y=$2
-count=$#
-imperfect=2
+COUNT=$#
 
-if [$count == $imperfect]
-then
+if (($COUNT == 2)); then
     make re -C ./generator/
     ./generator/generator $x $y imperfect > ./map
     make re -C ./rpg/
@@ -15,6 +13,5 @@ else
     make re -C ./generator/
     ./generator/generator $x $y > ./map
     make re -C ./rpg/
-    cd rpg
     ./my_rpg
 fi
