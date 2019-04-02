@@ -14,7 +14,7 @@ static  case_t  *set_tab(map_t *map)
 
     if (!(tab = malloc(sizeof(case_t*) * (map->y_max * map->x_max))))
         return (NULL);
-    tab[0] = NULL;
+//    tab[0] = NULL;
     map->nb_case = 0;
     return (tab);
 }
