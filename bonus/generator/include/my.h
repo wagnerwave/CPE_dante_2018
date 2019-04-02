@@ -19,3 +19,4 @@ void maze_imperfect(map_t *map);
 void maze_perfect(map_t *map);
 void maze(map_t *map, pos_t *pos);
 void print_maze(map_t *map);
+void new_map(map_t *map);

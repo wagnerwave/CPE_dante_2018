@@ -51,7 +51,7 @@ void init_perfect_maze(map_t *map, pos_t *pos)
     map->map[pos->end_y][pos->end_x] = '*';
 }
 
-void new_map(map_t *map, pos_t *pos)
+void new_map(map_t *map)
 {
     for (int y = 0; y < map->y; y++)
         for (int x = 0; x < map->x; x++)
@@ -82,7 +82,7 @@ void maze_perfect(map_t *map)
     for (int x = 0; x < map->x + 2; x++)
         putchar('X');
     putchar('\n');
-    new_map(map, pos);
+    new_map(map);
     print_maze(map);
     for (int x = 0; x < map->x + 2; x++) {
         if (x == map->x || x == map->x + 1) {

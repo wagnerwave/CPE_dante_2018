@@ -55,5 +55,30 @@ void maze_imperfect(map_t *map)
     init_pos(map, pos);
     init_maze(map);
     maze(map, pos);
+    printf("%d 2 %d\n\n", map->x + 2, map->y + 2);
+    for (int x = 0; x < map->x + 2; x++)
+        putchar('X');
+    putchar('\n');
     print_maze(map);
+    for (int x = 0; x < map->x + 2; x++) {
+        if (x == map->x || x == map->x + 1) {
+            putchar('*');
+        } else {
+            putchar('X');
+        }
+    }
+    puts("\n");
+    for (int x = 0; x < map->x + 2; x++)
+        putchar('X');
+    putchar('\n');
+    new_map(map);
+    print_maze(map);
+    for (int x = 0; x < map->x + 2; x++) {
+        if (x == map->x || x == map->x + 1) {
+            putchar('.');
+        } else {
+            putchar('X');
+        }
+    }
+    putchar('\n');
 }
