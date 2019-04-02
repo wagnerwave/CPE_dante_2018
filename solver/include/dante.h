@@ -8,6 +8,13 @@
 #ifndef DANTE_H
 #define DANTE_H
 
+typedef struct  case_s
+{
+    int x;
+    int y;
+    int value;
+}               case_t;
+
 typedef struct  map_s
 {
     char    **map;

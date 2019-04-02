@@ -1,23 +1,27 @@
-10 2 10
+12 2 12
 
-**********
-XX*XXXXXXX
-**********
-XXXXX*XXXX
-**********
-XXXX*XXXXX
-**********
-XXXXXXX*XX
-**********
-XXXXXXX*X*
+XXXXXXXXXXXX
+X**********X
+XXX*XXXXXXXX
+X**********X
+X*XXXXXXXXXX
+X**********X
+XXX*XXXXXXXX
+X**********X
+XXXXXXX*XXXX
+X**********X
+XXXXXX*XXX*X
+XXXXXXXXXX**
 
-..........
-XX.XXXXXXX
-..........
-XXXXX.XXXX
-..........
-XXXX.XXXXX
-..........
-XXXXXXX.XX
-..........
-XXXXXXX.X.
+XXXXXXXXXXXX
+X..........X
+XXX.XXXXXXXX
+X..........X
+X.XXXXXXXXXX
+X..........X
+XXX.XXXXXXXX
+X..........X
+XXXXXXX.XXXX
+X..........X
+XXXXXX.XXX.X
+XXXXXXXXXX..

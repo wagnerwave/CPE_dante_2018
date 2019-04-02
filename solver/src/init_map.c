@@ -8,37 +8,12 @@
 #include <stdlib.h>
 #include "dante.h"
 
-static  void    free_tab_at(int **tab, int nb)
-{
-    int i = 0;
-
-    while (i < nb) {
-        free(tab[i]);
-        i++;
-    }
-    free(tab);
-}
-
 static  int     **set_tab(map_t *map)
 {
-    int i = 0;
-    int j = 0;
-    int **tab;
+    case_t *tab;
 
-    if (!(tab = malloc(sizeof(int*) * map->y_max)))
+    if (!(tab = malloc(sizeof(case_t*) * (map->y_max * map->x_max + 1))))
         return (NULL);
-    while (i < map->y_max) {
-        if (!(tab[i] = malloc(sizeof(int) * map->x_max))) {
-            free_tab_at(tab, i);
-            return (NULL);
-        }
-        j = 0;
-        while (j < map->x_max) {
-            tab[i][j] = -1;
-            j++;
-        }
-        i++;
-    }
     return (tab);
 }
 

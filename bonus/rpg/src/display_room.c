@@ -22,7 +22,7 @@ void    display_room(my_game_t *game)
         display(game, game->room[game->actual_room]->fix_obj[i]);
         i++;
     }
-    if (global < 400)
+//    if (global < 400)
         printf("%d\n",
 (int)(1000 / ((double)(sfClock_getElapsedTime(game->clock).microseconds - time)
 / 1000) + 0.5));
