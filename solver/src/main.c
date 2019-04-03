@@ -14,7 +14,7 @@ static int      map_is_posible(map_t *map)
 {
     if (map->map[0][0] != '*' || map->map[map->x_max - 1][map->y_max - 1] !=
 '*') {
-        my_putstr("no solution found\n");
+        my_putstr("no solution found");
         return (0);
     }
     return (1);
@@ -25,7 +25,9 @@ static  void    display_map(map_t *map)
     int i = 0;
 
     while (i < map->y_max) {
-        printf("%s\n", map->map[i]);
+        printf("%s", map->map[i]);
+        if (i + 1 < map->y_max)
+            printf("\n");
         i++;
     }
 }
@@ -57,7 +59,7 @@ int     main(int ac, char **av)
         return (0);
     }
     if (!(resolve_map(map))) {
-        my_putstr("no solution found\n");
+        my_putstr("no solution found");
         return (0);
     }
     display_map(map);
