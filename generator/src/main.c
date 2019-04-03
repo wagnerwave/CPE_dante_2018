@@ -36,7 +36,7 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
             maze_imperfect(map);
             return 0;
         }
-        maze_perfect(map);
+        maze_imperfect(map);
     }
     return 0;
 }
