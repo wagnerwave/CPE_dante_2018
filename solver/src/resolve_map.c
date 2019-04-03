@@ -112,6 +112,6 @@ int     resolve_map(map_t *map)
         if (!to_start(map, head))
             return (0);
     }
-    //final_map(map);
+    final_map(map);
     return (1);
 }
