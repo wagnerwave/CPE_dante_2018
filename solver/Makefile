@@ -21,7 +21,7 @@ NAME	=	solver
 
 CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
 
-LDFLAGS	=	-L$(D_LIB) -lmy -lm
+LDFLAGS	=	-L$(D_LIB) -lmy -lm -g
 
 all: $(NAME)
 
