@@ -36,16 +36,16 @@ int verif_init(map_t *map, error_t *err)
 {
     if (err->error == 84) {
         if (map->y == 0) {
-            dprintf(2, "Error: Y arguments is 0...\n");
+            printf("Error: Y arguments is 0...");
             return 84;
         }
         if (map->x == 0) {
-            dprintf(2, "Error: X arguments is 0...\n");
+            printf("Error: X arguments is 0...");
             return 84;
         }
     }
     if (map->map == NULL) {
-        dprintf(2, "Error: Map Malloc error...\n");
+        printf("Error: Map Malloc error...");
         return 84;
     }
     return 0;

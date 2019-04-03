@@ -13,8 +13,8 @@
 
 void print_err_arg(void)
 {
-    dprintf(2, "Error : too many arguments or not enought.\n");
-    dprintf(2, "./generator [x] [y] [perfect/imperfect].\n");
+    printf("Error : too many arguments or not enought.");
+    printf("./generator [x] [y] [perfect/imperfect].");
     exit(84);
 }
 
@@ -48,7 +48,7 @@ int main(int ac, char **av)
 
     srand(time(NULL));
     if (map == NULL || err == NULL) {
-        dprintf(2, "Error: Malloc struct Failed.\n");
+        printf("Error: Malloc struct Failed.");
         return 84;
     }
     if (dante_star(ac, av, map, err) == 84)
