@@ -36,11 +36,11 @@ map->tab[map->nb_case].x, 2) + pow(map->y_max - map->tab[map->nb_case].y, 2);
 static  int     chose_posibility(map_t *map, int *head)
 {
     int     i = 0;
-    size_t  tmp = UINT_MAX;
+    size_t  tmp = 0;
     int     choice = -1;
 
     while (i < map->nb_case) {
-        if (map->tab[i].used == 0 && map->tab[i].value < tmp) {
+        if (map->tab[i].used == 0 && map->tab[i].value > tmp) {
             tmp = map->tab[i].value;
             choice = i;
         }
@@ -100,15 +100,15 @@ map->map[i][j] = '*' : 0;
 
 int     resolve_map(map_t *map)
 {
-    int head[3] = {0, 0, 0};
+    int head[3] = {map->x_max - 1, map->y_max - 1, 0};
 
-    while ((head[0] != map->x_max - 1 || head[1] != map->y_max - 1)) {
+    while ((head[0] != 0 || head[1] != 0)) {
         if (!chose_posibility(map, head))
             return (0);
         store_posibility(map, head);
     }
     map->map[head[0]][head[1]] = 'o';
-    while ((head[0] != 0 || head[1] != 0)) {
+    while ((head[0] != map->x_max - 1 || head[1] != map->y_max - 1)) {
         if (!to_start(map, head))
             return (0);
     }

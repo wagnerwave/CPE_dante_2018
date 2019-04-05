@@ -53,9 +53,9 @@ static  case_t  *set_tab(map_t *map)
         return (NULL);
     }
     tab[0].used = 0;
-    tab[0].x = 0;
-    tab[0].y = 0;
-    tab[0].value = (unsigned int)(-1) - 1;
+    tab[0].x = map->x_max - 1;
+    tab[0].y = map->y_max - 1;
+    tab[0].value = 1;
     tab[0].distance = 0;
     map->nb_case = 1;
     return (tab);
