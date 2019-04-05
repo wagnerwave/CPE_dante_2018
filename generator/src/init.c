@@ -29,7 +29,9 @@ void init_map(map_t *map, error_t *err, char **av)
         map->map[i] = malloc(sizeof(char) * (map->x + 1));
         map->map[i][map->x] = '\0';
     }
-
+    map->int_map = malloc(sizeof(int *) * (map->y) + 1);
+    for (int a = 0; a < map->y; a++)
+        map->int_map[a] = malloc(sizeof(int) * (map->x) + 1);
 }
 
 int verif_init(map_t *map, error_t *err)

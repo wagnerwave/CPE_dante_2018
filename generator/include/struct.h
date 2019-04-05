@@ -17,6 +17,7 @@ typedef struct map_var_s {
     int x;
     int y;
     char **map;
+    int **int_map;
 }map_t;
 
 typedef struct position_y_x_s {
