@@ -17,7 +17,7 @@ SRC	=	$(D_SRC)algo_maze.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-W -Wall -Wextra -I$(D_INC)
+CFLAGS	+=	-W -Wall -Wextra -I$(D_INC) -g
 
 all	:	$(NAME)
 
