@@ -74,12 +74,6 @@ static void make_way(map_t *map, pos_t *pos)
         }
         i++;
     }
-    if (y != pos->end_y)
-        for (int a = y; a < pos->end_y; a++, y++)
-            map->map[y][x] = '*';
-    if (x != pos->end_x)
-        for (int b = x; b < pos->end_x; b++, x++)
-            map->map[y][x] = '*';
 }
 
 void btree(map_t *map, pos_t *pos, int c)
