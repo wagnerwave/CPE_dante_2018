@@ -63,30 +63,6 @@ static  int     chose_posibility(map_t *map, int *head)
     return (1);
 }
 
-static  int     to_start(map_t *map, int *head)
-{
-    int     i = 0;
-    int     pos[4][2] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
-    int     choice = -1;
-    size_t  tmp = UINT_MAX;
-
-    while (i < 4) {
-        if (head[0] + pos[i][0] >= 0 && head[0] + pos[i][0] < map->x &&
-head[1] + pos[i][1] >= 0 && head[1] + pos[i][1] < map->y &&
-map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]] != -1 &&
-(size_t)(map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]]) < tmp) {
-            tmp = map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]];
-            choice = i;
-        }
-        i++;
-    }
-    if (choice == -1)
-        return 0;
-    head[0] += pos[choice][0];
-    head[1] += pos[choice][1];
-    return (1);
-}
-
 static  void    final_map(map_t *map)
 {
     int i = 0;
@@ -106,11 +82,13 @@ map->map[i][j] = '*' : 0;
 int     resolve_map(map_t *map)
 {
     int head[3] = {map->x - 1, map->y, 0};
+    int y = 0;
 
-    while ((head[0] != 0 || head[1] != 0)) {
+    while (y < ((map->y * map->x) / 2) && (head[0] != 0 || head[1] != 0)) {
         if (!chose_posibility(map, head))
             return (0);
         store_posibility(map, head);
+        y++;
     }
     final_map(map);
     return (1);

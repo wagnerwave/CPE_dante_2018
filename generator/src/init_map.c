@@ -26,9 +26,9 @@ static  int     **set_int_tab(map_t *map)
     int j = 0;
     int **itab;
 
-    if (!(itab = malloc(sizeof(int*) * (map->y + 1))))
+    if (!(itab = malloc(sizeof(int*) * map->y)))
         return (NULL);
-    while (i < map->y + 1) {
+    while (i < map->y) {
         if (!(itab[i] = malloc(sizeof(int) * map->x))) {
             free_at(itab, i);
             return (NULL);
@@ -55,7 +55,7 @@ static  case_t  *set_tab(map_t *map)
     }
     tab[0].used = 0;
     tab[0].x = map->x - 1;
-    tab[0].y = map->y;
+    tab[0].y = map->y - 1;
     tab[0].value = 1;
     tab[0].distance = 0;
     map->nb_case = 1;
