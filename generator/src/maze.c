@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "my.h"
 
-static void print_maze(map_t *map)
+void print_maze(map_t *map)
 {
     int i = 0;
 
