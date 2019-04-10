@@ -11,18 +11,10 @@
 #include <stdio.h>
 #include "my.h"
 
-void free_map(map_t *map)
-{
-    for (int i = 0; i < map->y; i++)
-        free(map->map[i]);
-    free(map->map);
-    free(map);
-}
-
 void print_err_arg(void)
 {
-    printf("Error : too many arguments or not enought.");
-    printf("./generator [x] [y] [perfect/imperfect].");
+    dprintf(2, "Error : too many arguments or not enought.\n");
+    dprintf(2, "./generator [x] [y] [perfect/imperfect].\n");
     exit(84);
 }
 
@@ -37,16 +29,14 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
         if (ac == 4 && PERFECT != 0 && IMPERFECT != 0)
             print_err_arg();
         if (ac == 4 && PERFECT == 0) {
-            generate(map, map->x - 1, map->y - 1);
-            print_maze(map);
+            maze_perfect(map);
             return 0;
         }
         if (ac == 4 && IMPERFECT == 0) {
-            maze_generator(map, 0);
+            maze_imperfect(map);
             return 0;
         }
-        maze_generator(map, 0);
-        free_map(map);
+        maze_perfect(map);
     }
     return 0;
 }
@@ -58,7 +48,7 @@ int main(int ac, char **av)
 
     srand(time(NULL));
     if (map == NULL || err == NULL) {
-        printf("Error: Malloc struct Failed.");
+        dprintf(2, "Error: Malloc struct Failed.\n");
         return 84;
     }
     if (dante_star(ac, av, map, err) == 84)

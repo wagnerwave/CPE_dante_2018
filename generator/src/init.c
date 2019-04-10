@@ -22,35 +22,30 @@ void init_map(map_t *map, error_t *err, char **av)
     err->error = 0;
     map->y = atoi(av[2]);
     map->x = atoi(av[1]);
-    if (map->y * map->x > 1000000)
-        exit(0);
     if (map->y == 0 || map->x == 0)
         err->error = 84;
-    map->map = malloc(sizeof(char *) * map->y);
+    map->map = malloc(sizeof(char *) * (map->y + 1));
     for (int i = 0; i < map->y; i++) {
         map->map[i] = malloc(sizeof(char) * (map->x + 1));
         map->map[i][map->x] = '\0';
     }
-    for (int i = 0; i < map->y; i++)
-        for (int x = 0; x < map->x; x++)
-            map->map[i][x] = 'X';
-    init_map_second(&map);
+
 }
 
 int verif_init(map_t *map, error_t *err)
 {
     if (err->error == 84) {
         if (map->y == 0) {
-            printf("Error: Y arguments is 0...");
+            dprintf(2, "Error: Y arguments is 0...\n");
             return 84;
         }
         if (map->x == 0) {
-            printf("Error: X arguments is 0...");
+            dprintf(2, "Error: X arguments is 0...\n");
             return 84;
         }
     }
     if (map->map == NULL) {
-        printf("Error: Map Malloc error...");
+        dprintf(2, "Error: Map Malloc error...\n");
         return 84;
     }
     return 0;

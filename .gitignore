@@ -1,5 +1,8 @@
-solver
-generator
+./solver/solver
+./generator/generator
+./bonus/generator
+./bonus/rpg
+./bonus/bonus.sh
 *~
 *.o
 *.a
