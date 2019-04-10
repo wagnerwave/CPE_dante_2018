@@ -16,9 +16,9 @@ OBJ	=	$(SRC:%.c=%.o)
 
 NAME	=	generator
 
-CFLAGS	=	-W -Wall -Wextra -I$(D_INC)
+CFLAGS	=	-W -Wall -Wextra -I$(D_INC) -g
 
-LDFLAGS	=	-lm -g
+LDFLAGS	=	-lm
 
 all: $(NAME)
 

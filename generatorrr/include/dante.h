@@ -13,8 +13,8 @@
 
 typedef struct  map_s
 {
-    size_t  x_max;
-    size_t  y_max;
+    size_t  x;
+    size_t  y;
     char    **map;
 }               map_t;
 

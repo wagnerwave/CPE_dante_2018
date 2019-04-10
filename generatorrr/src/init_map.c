@@ -6,24 +6,7 @@
 */
 
 #include "dante.h"
-/*
-static  void    set_map(map_t *map)
-{
-    size_t i = 0;
-    size_t j;
 
-    while (i < map->y_max) {
-        j = 0;
-        while (j < map->x_max) {
-            map->map[i * (map->x_max + 1) + j] = 'X';
-            j++;
-        }
-        map->map[i * (map->x_max + 1) + j] = '\n';
-        i++;
-    }
-    map->map[(i - 1) * (map->x_max + 1) + j] = '\0';
-}
-*/
 map_t   *init_map(char **av)
 {
     size_t i = 0;
@@ -32,24 +15,23 @@ map_t   *init_map(char **av)
 
     if (!(map = malloc(sizeof(map_t))))
         return (NULL);
-    if (!(map->x_max = atoi(av[1])))
+    if (!(map->x = atoi(av[1])))
         return (NULL);
-    if (!(map->y_max = atoi(av[2])))
+    if (!(map->y = atoi(av[2])))
         return (NULL);
-    if (!(map->map = malloc(sizeof(char*) * (map->y_max)))) {
+    if (!(map->map = malloc(sizeof(char*) * (map->y)))) {
         free(map);
         return (NULL);
     }
-    while (i < map->y_max) {
-        map->map[i] = malloc(map->x_max + 1);
+    while (i < map->y) {
+        map->map[i] = malloc(map->x + 1);
         j = 0;
-        while (j < map->x_max) {
+        while (j < map->x) {
             map->map[i][j] = 'X';
             j++;
         }
         map->map[i][j] = '\0';
         i++;
     }
-    //set_map(map);
     return (map);
 }

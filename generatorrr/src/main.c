@@ -11,7 +11,6 @@
 
 void    display_map(map_t *map)
 {
-    //write(1, map->map, (map->x_max + 1) * map->y_max - 1);
     size_t i = 0;
 
     while (i < map->y_max) {
@@ -29,7 +28,7 @@ int     main(int ac, char **av)
     if (!(map = init_map(av)))
         return (84);
     srand(time(NULL));
-    generate(map, map->x_max - 1, map->y_max - 1);
+    generate(map, map->x - 1, map->y - 1);
     display_map(map);
     return (0);
 }
