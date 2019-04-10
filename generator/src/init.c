@@ -22,6 +22,8 @@ void init_map(map_t *map, error_t *err, char **av)
     err->error = 0;
     map->y = atoi(av[2]);
     map->x = atoi(av[1]);
+    if (map->y * map->x > 1000000)
+        exit(0);
     if (map->y == 0 || map->x == 0)
         err->error = 84;
     map->map = malloc(sizeof(char *) * map->y);

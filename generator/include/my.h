@@ -22,3 +22,4 @@ int resolve_map(map_t *map);
 void free_map(map_t *map);
 int my_pow(int nb, int p);
 void print_maze(map_t *map);
+void generate(map_t *map, int x, int y);

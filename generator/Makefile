@@ -12,6 +12,7 @@ NAME	=	generator
 
 SRC	=	$(D_SRC)algo_maze.c \
 		$(D_SRC)resolve_map.c \
+		$(D_SRC)generate.c \
 		$(D_SRC)maze.c \
 		$(D_SRC)init.c \
 		$(D_SRC)my_pow.c \

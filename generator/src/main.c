@@ -37,7 +37,7 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
         if (ac == 4 && PERFECT != 0 && IMPERFECT != 0)
             print_err_arg();
         if (ac == 4 && PERFECT == 0) {
-            maze_generator(map, 1);
+            generate(map, map->x - 1, map->y - 1);
             return 0;
         }
         if (ac == 4 && IMPERFECT == 0) {
