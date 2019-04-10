@@ -10,15 +10,17 @@ D_INC	=	./include/
 
 NAME	=	generator
 
-SRC	=	$(D_SRC)algo_imperfect.c \
-		$(D_SRC)imperfect.c \
-		$(D_SRC)perfect.c \
+SRC	=	$(D_SRC)algo_maze.c \
+		$(D_SRC)resolve_map.c \
+		$(D_SRC)maze.c \
 		$(D_SRC)init.c \
+		$(D_SRC)my_pow.c \
+		$(D_SRC)init_map.c \
 		$(D_SRC)main.c
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-W -Wall -Wextra -I$(D_INC) -g
+CFLAGS	+=	-W -Wall -Wextra -I$(D_INC) -lm -g
 
 all	:	$(NAME)
 
