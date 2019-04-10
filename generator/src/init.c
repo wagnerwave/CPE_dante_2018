@@ -31,6 +31,9 @@ void init_map(map_t *map, error_t *err, char **av)
         map->map[i] = malloc(sizeof(char) * (map->x + 1));
         map->map[i][map->x] = '\0';
     }
+    for (int i = 0; i < map->y; i++)
+        for (int x = 0; x < map->x; x++)
+            map->map[i][x] = 'X';
     init_map_second(&map);
 }
 
