@@ -17,16 +17,16 @@ static  void    store_posibility(map_t *map, int *head)
     int pos[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     while (i < 4) {
-        if (head[0] + pos[i][0] >= 0 && head[0] + pos[i][0] < map->x_max &&
-head[1] + pos[i][1] >= 0 && head[1] + pos[i][1] < map->y_max &&
+        if (head[0] + pos[i][0] >= 0 && head[0] + pos[i][0] < map->y_max &&
+head[1] + pos[i][1] >= 0 && head[1] + pos[i][1] < map->x_max &&
 map->map[head[0] + pos[i][0]][head[1] + pos[i][1]] == '*') {
             map->tab[map->nb_case].used = 0;
-            map->tab[map->nb_case].x = head[0] + pos[i][0];
-            map->tab[map->nb_case].y = head[1] + pos[i][1];
-            map->tab[map->nb_case].value = pow(map->x_max -
-map->tab[map->nb_case].x, 2) + pow(map->y_max - map->tab[map->nb_case].y, 2);
+            map->tab[map->nb_case].y = head[0] + pos[i][0];
+            map->tab[map->nb_case].x = head[1] + pos[i][1];
+            map->tab[map->nb_case].value = pow(map->y_max -
+map->tab[map->nb_case].y, 2) + pow(map->x_max - map->tab[map->nb_case].x, 2);
             map->tab[map->nb_case].distance = head[2] + 1;
-            map->map[map->tab[map->nb_case].x][map->tab[map->nb_case].y] = '.';
+            map->map[map->tab[map->nb_case].y][map->tab[map->nb_case].x] = '.';
             map->nb_case++;
         }
         i++;
@@ -49,8 +49,8 @@ static  int     chose_posibility(map_t *map, int *head)
     if (choice == -1)
         return (0);
     map->tab[choice].used = 1;
-    head[0] = map->tab[choice].x;
-    head[1] = map->tab[choice].y;
+    head[0] = map->tab[choice].y;
+    head[1] = map->tab[choice].x;
     map->map[head[0]][head[1]] = 'u';
     head[2] = map->tab[choice].distance;
     map->itab[head[0]][head[1]] = map->tab[choice].distance;
@@ -65,8 +65,8 @@ static  int     to_start(map_t *map, int *head)
     size_t  tmp = UINT_MAX;
 
     while (i < 4) {
-        if (head[0] + pos[i][0] >= 0 && head[0] + pos[i][0] < map->x_max &&
-head[1] + pos[i][1] >= 0 && head[1] + pos[i][1] < map->y_max &&
+        if (head[0] + pos[i][0] >= 0 && head[0] + pos[i][0] < map->y_max &&
+head[1] + pos[i][1] >= 0 && head[1] + pos[i][1] < map->x_max &&
 map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]] != -1 &&
 (size_t)(map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]]) < tmp) {
             tmp = map->itab[head[0] + pos[i][0]][head[1] + pos[i][1]];
@@ -98,17 +98,18 @@ map->map[i][j] = '*' : 0;
     }
 }
 
+void    display_map(map_t *map);
 int     resolve_map(map_t *map)
 {
-    int head[3] = {map->x_max - 1, map->y_max - 1, 0};
+    int head[3] = {map->y_max - 1, map->x_max - 1, 0};
 
     while ((head[0] != 0 || head[1] != 0)) {
         if (!chose_posibility(map, head))
             return (0);
         store_posibility(map, head);
     }
-    map->map[head[0]][head[1]] = 'o';
-    while ((head[0] != map->x_max - 1 || head[1] != map->y_max - 1)) {
+    map->map[head[1]][head[0]] = 'o';
+    while ((head[0] != map->y_max - 1 || head[1] != map->x_max - 1)) {
         if (!to_start(map, head))
             return (0);
     }
