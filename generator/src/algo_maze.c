@@ -39,7 +39,6 @@ static void make_map(map_t *map, int y, int x, int opt)
 
 void btree(map_t *map, pos_t *pos, int c)
 {
-
     for (int y = 0; y < map->y; ++y)
         for (int x = 0; x < map->x; ++x)
             map->map[y][x] = '*';
@@ -55,4 +54,21 @@ void btree(map_t *map, pos_t *pos, int c)
     map->map[pos->end_y][pos->end_x] = '*';
     map->map[pos->end_y - 1][pos->end_x] = '*';
     resolve_map(map);
+}
+
+int     cond_break_wall(map_t *map, int *head, int choice, int i)
+{
+    int     pos[4][2] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
+    if ((int)map->tab[choice].y + pos[i][0] >= 0 && (int)map->tab[choice].y
++ pos[i][0] < map->y && (int)map->tab[choice].x + pos[i][1] >= 0 &&
+(int)map->tab[choice].x + pos[i][1] < map->x && map->map[map->tab[choice].y +
+pos[i][0]][map->tab[choice].x + pos[i][1]] == 'X') {
+        map->map[map->tab[choice].y + pos[i][0]][map->tab[choice].x +
+            pos[i][1]] = '*';
+        head[0] = map->tab[choice].y;
+        head[1] = map->tab[choice].x;
+        return (1);
+    }
+    return (0);
 }

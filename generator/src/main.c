@@ -30,7 +30,7 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
 {
     if (ac < 3 || ac > 4)
         return 84;
-    init_map(map, err, av);
+    init_map(map, err, av, ac);
     if (verif_init(map, err) == 84)
         return 84;
     if (ac >= 3) {

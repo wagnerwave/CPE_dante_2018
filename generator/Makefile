@@ -21,12 +21,12 @@ SRC	=	$(D_SRC)algo_maze.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-W -Wall -Wextra -I$(D_INC) -lm -g
+CFLAGS	+=	-W -Wall -Wextra -I$(D_INC)
 
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-		gcc -o $(NAME) $(OBJ)
+		gcc -o $(NAME) $(OBJ) -lm
 
 clean	:
 		rm -f $(OBJ)
