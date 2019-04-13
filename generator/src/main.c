@@ -30,22 +30,16 @@ int dante_star(int ac, char **av, map_t *map, error_t *err)
 {
     if (ac < 3 || ac > 4)
         return 84;
-    init_map(map, err, av, ac);
+    init_map(map, err, av);
     if (verif_init(map, err) == 84)
         return 84;
     if (ac >= 3) {
         if (ac == 4 && PERFECT != 0 && IMPERFECT != 0)
             print_err_arg();
-        if (ac == 4 && PERFECT == 0) {
-            generate(map, map->x - 1, map->y - 1);
-            print_maze(map);
-            return 0;
-        }
-        if (ac == 4 && IMPERFECT == 0) {
-            maze_generator(map, 0);
-            return 0;
-        }
-        maze_generator(map, 0);
+        generate(map);
+        if (ac == 3 || (ac > 3 && !(IMPERFECT)))
+            break_wall_imp(map);
+        print_maze(map);
         free_map(map);
     }
     return 0;

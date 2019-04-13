@@ -18,13 +18,11 @@ void init_pos(map_t *map, pos_t *pos)
     pos->end_y = map->y - 1;
 }
 
-void init_map(map_t *map, error_t *err, char **av, int ac)
+void init_map(map_t *map, error_t *err, char **av)
 {
     err->error = 0;
     map->y = atoi(av[2]);
     map->x = atoi(av[1]);
-    if (ac == 4 && !strcmp(av[3], "perfect") && map->y * map->x > 1000000)
-        exit(84);
     if (map->y == 0 || map->x == 0)
         err->error = 84;
     map->map = malloc(sizeof(char *) * map->y);

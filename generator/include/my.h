@@ -12,7 +12,7 @@
 #define IMPERFECT strcmp(av[3], "imperfect")
 #define PERFECT strcmp(av[3], "perfect")
 
-void init_map(map_t *map, error_t *err, char **av, int ac);
+void init_map(map_t *map, error_t *err, char **av);
 void init_pos(map_t *map, pos_t *pos);
 int verif_init(map_t *map, error_t *err);
 void maze_generator(map_t *map, int bool);
@@ -22,5 +22,6 @@ int resolve_map(map_t *map);
 void free_map(map_t *map);
 int my_pow(int nb, int p);
 void print_maze(map_t *map);
-void generate(map_t *map, int x, int y);
+void    generate(map_t *map);
 int     cond_break_wall(map_t *map, int *head, int choice, int i);
+void    break_wall_imp(map_t *map);

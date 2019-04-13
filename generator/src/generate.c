@@ -7,57 +7,48 @@
 
 #include "my.h"
 
-const int pos[4][2] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
-const int sch[4][5][2] = {{{0, -1}, {1, 0}, {-1, 0}, {-1, -1}, {1, -1}},
-{{0, 1}, {1, 0}, {0, -1}, {1, 1}, {1, -1}},
-{{1, 0}, {0, 1}, {-1, 0}, {1, 1}, {-1, 1}},
-{{-1, 0}, {0, 1}, {0, -1}, {-1, 1}, {-1, -1}}};
-
-static  int     is_posible(map_t *map, int x, int y, size_t nb)
+void    put_back_star(map_t *map, size_t y, size_t x)
 {
-    size_t  i = 0;
+    size_t tmp;
 
-    if (x + pos[nb][0] < 0 || x + pos[nb][0] >= (int)map->x ||
-y + pos[nb][1] < 0 || y + pos[nb][1] >= (int)map->y)
-        return (0);
-    if (map->map[y + pos[nb][1]][x + pos[nb][0]] != 'X')
-        return (0);
-    while (i < 5) {
-        if (x + pos[nb][0] + sch[nb][i][0] < 0 || x + pos[nb][0] + sch[nb][i][0]
->= (int)map->x || y + pos[nb][1] + sch[nb][i][1] < 0 || y + pos[nb][1] +
-sch[nb][i][1] >= (int)map->y) {
-            i++;
-            continue ;
-        }
-        if (map->map[(y + pos[nb][1] + sch[nb][i][1])]
-[(x + pos[nb][0] + sch[nb][i][0])] != 'X')
-            return (0);
-        i++;
+    if (x == 0 || y == 0) {
+        if (x > 0)
+            map->map[y][x - 1] = '*';
+        if (y > 0)
+            map->map[y - 1][x] = '*';
+        return ;
     }
-    return (1);
+    tmp = rand() % 2;
+    if (tmp == 0)
+        map->map[y][x - 1] = '*';
+    else
+        map->map[y - 1][x] = '*';
 }
 
-void    generate(map_t *map, int x, int y)
+void    generate(map_t *map)
 {
-    int     tab[4] = {0, 0, 0, 0};
-    int     i = -1;
-    size_t  tmp;
+    size_t i = 0;
+    size_t j;
 
-    map->map[y][x] = '*';
-    while (++i < 4) {
-        if (is_posible(map, x, y, i) && x + pos[i][0] == 0 &&
-y + pos[i][1] == 0) {
-            tab[i] = 1;
-            generate(map, x + pos[i][0], y + pos[i][1]);
-            break;
+    while (i < (size_t)map->y) {
+        j = 0;
+        while (j < (size_t)map->x) {
+            map->map[i][j] = '*';
+            put_back_star(map, i, j);
+            j += 2;
         }
+        i += 2;
     }
-    while (tab[0] == 0 || tab[1] == 0 || tab[2] == 0 || tab[3] == 0) {
-        tmp = rand() % 4;
-        if (tab[tmp] == 1)
-            continue;
-        tab[tmp] = 1;
-        if (is_posible(map, x, y, tmp))
-            generate(map, x + pos[tmp][0], y + pos[tmp][1]);
+    map->map[map->y - 1][map->x - 2] = '*';
+    map->map[map->y - 1][map->x - 1] = '*';
+}
+
+void    break_wall_imp(map_t *map)
+{
+    size_t i = 0;
+
+    while (i < (size_t)map->y) {
+        map->map[i][rand() % map->x] = '*';
+        i += 2;
     }
 }
