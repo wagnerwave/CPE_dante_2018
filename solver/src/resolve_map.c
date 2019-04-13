@@ -98,7 +98,6 @@ map->map[i][j] = '*' : 0;
     }
 }
 
-void    display_map(map_t *map);
 int     resolve_map(map_t *map)
 {
     int head[3] = {map->y_max - 1, map->x_max - 1, 0};
