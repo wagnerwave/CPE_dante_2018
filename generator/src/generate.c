@@ -46,9 +46,14 @@ void    generate(map_t *map)
 void    break_wall_imp(map_t *map)
 {
     size_t i = 0;
+    size_t j;
 
     while (i < (size_t)map->y) {
-        map->map[i][rand() % map->x] = '*';
+        j = 0;
+        while (j < (size_t)map->x) {
+            (!(rand() % 8)) ? map->map[i][j] = '*' : 0;
+            j++;
+        }
         i += 2;
     }
 }
