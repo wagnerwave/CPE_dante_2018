@@ -39,7 +39,8 @@ void    generate(map_t *map)
         }
         i += 2;
     }
-    map->map[map->y - 1][map->x - 2] = '*';
+    if (map->y % 2 == 0 && map->map[map->y - 2][map->x - 1] == 'X')
+        map->map[map->y - 1][map->x - 2] = '*';
     map->map[map->y - 1][map->x - 1] = '*';
 }
 
