@@ -12,8 +12,8 @@
 
 static int      map_is_posible(map_t *map)
 {
-    if (map->map[0][0] != '*' || map->map[map->y_max - 1][map->x_max - 1] !=
-'*') {
+    if (map->map[0][0] != '*' || map->map[map->y_max - 1][map->x_max - 1]
+!= '*') {
         my_putstr("no solution found");
         return (0);
     }

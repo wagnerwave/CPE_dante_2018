@@ -35,8 +35,8 @@ map->tab[map->nb_case].y, 2) + pow(map->x_max - map->tab[map->nb_case].x, 2);
 
 static  int     chose_posibility(map_t *map, int *head)
 {
-    int     i = 0;
     size_t  tmp = 0;
+    int     i = 0;
     int     choice = -1;
 
     while (i < map->nb_case) {
